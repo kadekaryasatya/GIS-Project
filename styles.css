@@ -1,0 +1,43 @@
+body {
+  font-family: 'Courier New';
+}
+
+#map {
+  width: 1000px;
+  height: 680px;
+  border-radius: 20px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 68%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: none;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.leaflet-popup-content {
+  width: 250px;
+  height: 100px;
+}
+
+.col {
+  float: left;
+  width: 35%;
+}
+.col2 {
+  float: left;
+  width: 65%;
+  text-align: right;
+}
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body class="bg-slate-500 lg:overflow-hidden">
+    <div class="text-white min-h-screen container lg:flex lg:justify-between p-5">
+      <div class="p-2">
+        <h2 class="text-2xl font-semibold pb-5">Welcome to <span class="text-yellow-300">Dex</span> Leaflet apps</h2>
+        <div>
+          <h3>Instructions :</h3>
+          <ul>
+            <li class="text-sm">1. Add Marker : Click Map</li>
+            <li class="text-sm">2. Delete Marker : Right Click on Marker</li>
+            <li class="text-sm">3. Move Marker : Drag Marker</li>
+            <li class="text-sm">4. Marker Information : Click Marker</li>
+          </ul>
+        </div>
+      </div>
+      <div class="">
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add Marker</h2>
+        <form>
+          <label for="latitude">Latitude:</label>
+          <input type="text" id="latitude" name="latitude" />
+          <br />
+          <label for="longitude">Longitude:</label>
+          <input type="text" id="longitude" name="longitude" />
+          <br />
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" />
+          <br />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
+          <br />
+          <input type="submit" value="Save" />
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
