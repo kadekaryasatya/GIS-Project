@@ -1,9 +1,18 @@
+//Add Map
 var map = L.map('map').setView([-8.4095188, 115.188919], 11);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Map data &copy; OpenStreetMap contributors',
+  attribution: 'Map data &copy; Dex',
   maxZoom: 18,
 }).addTo(map);
+
+var myIcon = L.icon({
+  iconUrl: 'icons.png',
+  iconSize: [45, 45],
+  iconAnchor: [20, 40],
+});
+
+L.marker([51.5, -0.09], { icon: myIcon }).addTo(map);
 
 // Code for modal window goes here
 
@@ -30,12 +39,17 @@ form.onsubmit = function (event) {
   var longitude = parseFloat(document.getElementById('longitude').value);
   var name = document.getElementById('name').value;
   var email = document.getElementById('email').value;
+  var address = document.getElementById('address').value;
+  var phone = document.getElementById('phone').value;
   var data = {
     latitude: latitude,
     longitude: longitude,
     name: name,
     email: email,
+    address: address,
+    phone: phone,
   };
+
   var savedData = JSON.parse(localStorage.getItem('markerData')) || [];
   savedData.push(data);
   console.log('savedData :>> ', savedData);
@@ -43,24 +57,24 @@ form.onsubmit = function (event) {
   alert('Marker and data saved!');
   modal.style.display = 'none';
   savedData.forEach(function (data) {
-    L.marker([data.latitude, data.longitude]).addTo(map);
+    L.marker([data.latitude, data.longitude], { icon: myIcon }).addTo(map);
   });
 };
 
 var savedData = JSON.parse(localStorage.getItem('markerData')) || [];
 savedData.forEach(function (data) {
-  L.marker([data.latitude, data.longitude]).addTo(map);
+  L.marker([data.latitude, data.longitude], { icon: myIcon }).addTo(map);
 });
 
 // When adding markers to the map
 savedData.forEach(function (data) {
-  var marker = L.marker([data.latitude, data.longitude]).addTo(map);
+  var marker = L.marker([data.latitude, data.longitude], { icon: myIcon }).addTo(map);
 
   // Add click event listener to the marker
   marker.on('click', function (e) {
     // Show dialog box with marker's details
-    var details = 'Name: ' + data.name + '<br>' + 'Email: ' + data.email + '<br>' + 'Lat: ' + data.latitude;
-    details += "<br><button class='delete-marker' data-latitude='" + data.latitude + "' data-longitude='" + data.longitude + "'>Delete Marker</button>";
+    var details = 'Name: ' + data.name + '<br>' + 'Email: ' + data.email + '<br>' + 'Address: ' + data.address + '<br>' + 'Phone: ' + data.phone + '<br>' + 'Lat: ' + data.latitude + '<br>' + 'Lat: ' + data.longitude;
+    details += "<div class='delete-button'><button class='delete-marker' data-latitude='" + data.latitude + "' data-longitude='" + data.longitude + "'>Delete</button></div>";
     L.popup().setLatLng([data.latitude, data.longitude]).setContent(details).openOn(map);
   });
 });

@@ -8,17 +8,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dex Leaflet</title>
   </head>
   <body class="bg-slate-500 lg:overflow-hidden">
     <div class="text-white min-h-screen container lg:flex lg:justify-between p-5">
       <div class="p-2">
         <h2 class="text-2xl font-semibold pb-5">Welcome to <span class="text-yellow-300">Dex</span> Leaflet apps</h2>
         <div>
-          <h3>Instructions :</h3>
+          <h3>Features :</h3>
           <ul>
             <li class="text-sm">1. Add Marker : Click Map</li>
-            <li class="text-sm">2. Delete Marker : Right Click on Marker</li>
+            <li class="text-sm">2. Delete Marker : In Marker Information</li>
             <li class="text-sm">3. Move Marker : Drag Marker</li>
             <li class="text-sm">4. Marker Information : Click Marker</li>
           </ul>
@@ -32,22 +32,50 @@
     <!-- Modal -->
     <div id="myModal" class="modal">
       <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Add Marker</h2>
-        <form>
-          <label for="latitude">Latitude:</label>
-          <input type="text" id="latitude" name="latitude" />
-          <br />
-          <label for="longitude">Longitude:</label>
-          <input type="text" id="longitude" name="longitude" />
-          <br />
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" />
-          <br />
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" />
-          <br />
-          <input type="submit" value="Save" />
+        <div class="flex justify-between mb-4">
+          <h2 class="text-lg font-bold">Add Marker</h2>
+          <span class="close cursor-pointer text-lg">&times;</span>
+        </div>
+        <form class="">
+          <div class="grid grid-cols-2 mb-1">
+            <label for="latitude">Latitude :</label>
+            <input type="text" id="latitude" name="latitude" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" disabled />
+          </div>
+
+          <div class="grid grid-cols-2 mb-1">
+            <label for="longitude">Longitude :</label>
+            <input type="text" id="longitude" name="longitude" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" disabled />
+          </div>
+
+          <div class="grid grid-cols-2 mb-1">
+            <label for="name">Name :</label>
+            <input type="text" id="name" name="name" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" required />
+          </div>
+
+          <div class="grid grid-cols-2 mb-1">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" required />
+          </div>
+
+          <div class="grid grid-cols-2 mb-1">
+            <label for="address">Address :</label>
+            <input type="text" id="address" name="address" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" required />
+          </div>
+
+          <div class="grid grid-cols-2 mb-1">
+            <label for="phone">Phone :</label>
+            <input type="phone" id="phone" name="phone" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" required />
+          </div>
+
+          <div class="flex justify-end mt-4">
+            <button
+              type="submit"
+              value="Save"
+              class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-bold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            >
+              Save
+            </button>
+          </div>
         </form>
       </div>
     </div>
