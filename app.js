@@ -52,7 +52,6 @@ form.onsubmit = function (event) {
 
   var savedData = JSON.parse(localStorage.getItem('markerData')) || [];
   savedData.push(data);
-  console.log('savedData :>> ', savedData);
   localStorage.setItem('markerData', JSON.stringify(savedData));
   alert('Marker and data saved!');
   modal.style.display = 'none';
