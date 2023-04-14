@@ -12,7 +12,7 @@ var myIcon = L.icon({
   iconAnchor: [20, 40],
 });
 
-L.marker([51.5, -0.09], { icon: myIcon }).addTo(map);
+var savedData = JSON.parse(localStorage.getItem('markerData')) || [];
 
 // Code for modal window goes here
 
@@ -38,6 +38,7 @@ form.onsubmit = function (event) {
   var latitude = parseFloat(document.getElementById('latitude').value);
   var longitude = parseFloat(document.getElementById('longitude').value);
   var name = document.getElementById('name').value;
+  var desa = document.getElementById('desa').value;
   var email = document.getElementById('email').value;
   var address = document.getElementById('address').value;
   var phone = document.getElementById('phone').value;
@@ -45,6 +46,7 @@ form.onsubmit = function (event) {
     latitude: latitude,
     longitude: longitude,
     name: name,
+    desa: desa,
     email: email,
     address: address,
     phone: phone,
@@ -60,19 +62,38 @@ form.onsubmit = function (event) {
   });
 };
 
-var savedData = JSON.parse(localStorage.getItem('markerData')) || [];
-savedData.forEach(function (data) {
-  L.marker([data.latitude, data.longitude], { icon: myIcon }).addTo(map);
-});
-
 // When adding markers to the map
+var markers = L.markerClusterGroup();
 savedData.forEach(function (data) {
   var marker = L.marker([data.latitude, data.longitude], { icon: myIcon }).addTo(map);
+  markers.addLayer(marker);
+  map.addLayer(markers);
+  console.log('savedData :>> ', savedData);
 
   // Add click event listener to the marker
   marker.on('click', function (e) {
     // Show dialog box with marker's details
-    var details = 'Name: ' + data.name + '<br>' + 'Email: ' + data.email + '<br>' + 'Address: ' + data.address + '<br>' + 'Phone: ' + data.phone + '<br>' + 'Lat: ' + data.latitude + '<br>' + 'Lat: ' + data.longitude;
+    var details =
+      'Nama Banjar: ' +
+      data.name +
+      '<br>' +
+      'Desa: ' +
+      data.desa +
+      '<br>' +
+      'Email: ' +
+      data.email +
+      '<br>' +
+      'Address: ' +
+      data.address +
+      '<br>' +
+      'Phone: ' +
+      data.phone +
+      '<br>' +
+      'Lat: ' +
+      data.latitude +
+      '<br>' +
+      'Lat: ' +
+      data.longitude;
     details += "<div class='delete-button'><button class='delete-marker' data-latitude='" + data.latitude + "' data-longitude='" + data.longitude + "'>Delete</button></div>";
     L.popup().setLatLng([data.latitude, data.longitude]).setContent(details).openOn(map);
   });
@@ -104,6 +125,16 @@ mapContainer.addEventListener('click', function (e) {
     map.closePopup();
   }
 });
+
+//Add Maarker Cluster
+// var markers = L.markerClusterGroup();
+
+// for (var i = 0; i < savedData.length; i++) {
+//   var marker = L.marker([savedData[i].latitude, savedData[i].longitude]);
+//   markers.addLayer(marker);
+// }
+
+// map.addLayer(markers);
 
 // // Add saved markers to map
 // for (var i = 0; i < savedData.length; i++) {

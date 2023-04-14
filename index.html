@@ -4,6 +4,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.Default.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -36,7 +41,7 @@
     <div id="myModal" class="modal">
       <div class="modal-content">
         <div class="flex justify-between mb-4">
-          <h2 class="text-lg font-bold">Add Marker</h2>
+          <h2 class="text-lg font-bold">Add New Banjar Marker</h2>
           <span class="close cursor-pointer text-lg">&times;</span>
         </div>
         <form class="">
@@ -51,8 +56,13 @@
           </div>
 
           <div class="grid grid-cols-2 mb-1">
-            <label for="name">Name :</label>
+            <label for="name">Nama Banjar</label>
             <input type="text" id="name" name="name" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" required />
+          </div>
+
+          <div class="grid grid-cols-2 mb-1">
+            <label for="name">Desa</label>
+            <input type="text" id="desa" name="desa" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" required />
           </div>
 
           <div class="grid grid-cols-2 mb-1">
@@ -61,7 +71,7 @@
           </div>
 
           <div class="grid grid-cols-2 mb-1">
-            <label for="address">Address :</label>
+            <label for="address">Alamat :</label>
             <input type="text" id="address" name="address" class="border-dotted border-2 border-sky-500 p-1 hover:border-solid" required />
           </div>
 
