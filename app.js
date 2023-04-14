@@ -62,10 +62,11 @@ form.onsubmit = function (event) {
   });
 };
 
-// When adding markers to the map
+// When adding markers to the map  & create cluster
 var markers = L.markerClusterGroup();
 savedData.forEach(function (data) {
   var marker = L.marker([data.latitude, data.longitude], { icon: myIcon }).addTo(map);
+  marker.dragging.enable();
   markers.addLayer(marker);
   map.addLayer(markers);
   console.log('savedData :>> ', savedData);
